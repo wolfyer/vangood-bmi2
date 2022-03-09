@@ -19,7 +19,7 @@ class ResultActivity : AppCompatActivity() {
             val name = binding.tnName.text.toString()
             val data = Intent()
             data.putExtra("NAME",name)
-            setResult(RESULT_OK,)
+            setResult(RESULT_OK,data)
             finish()
 
         }
