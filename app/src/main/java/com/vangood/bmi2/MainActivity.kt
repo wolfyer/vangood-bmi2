@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             //.show()
         binding.tvBmi.text = "Your bmi is $bmi"
         val intent = Intent(this,ResultActivity::class.java)
-        intent.putExtra("BMI_EXTRA",bmi)
+        intent.putExtra(Extras.BMI,bmi)
         //startActivity(intent)
         //startActivityForResult(intent,REQUEST_DISPLAY_BMI)
         launcher.launch(bmi)
@@ -83,13 +83,13 @@ class MainActivity : AppCompatActivity() {
     }
     class NameContract :ActivityResultContract<Float,String>(){
         override fun createIntent(context: Context, input: Float?): Intent {
-            val intent = Intent(context,ResultActivity::class.java).putExtra("BMI_EXTRA",input)
+            val intent = Intent(context,ResultActivity::class.java).putExtra(Extras.BMI,input)
             return intent
         }
 
         override fun parseResult(resultCode: Int, intent: Intent?): String {
             if(resultCode == RESULT_OK){
-                val name = intent?.getStringExtra("NAME")
+                val name = intent?.getStringExtra(Extras.NAME)
                 return name!!
             }else{
                 return "No name"
