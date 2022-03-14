@@ -12,13 +12,13 @@ import java.net.URL
 import kotlin.concurrent.thread
 
 class TransationActivity : AppCompatActivity() {
-    lateinit var binding :ActivityTransationBinding
+    lateinit var binding : ActivityTransationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityTransationBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.recycler.hasFixedSize()
-        binding.recycler.layoutManger = LinearLayoutManager(this)
+        binding.recycler.layoutManager = LinearLayoutManager(this)
         thread {
             val json = URL("https://atm201605.appspot.com/h").readText()
             val gson = Gson()
@@ -70,7 +70,6 @@ class TransationActivity : AppCompatActivity() {
 
     inner class TranViewHolder(val binding: RowRecycleviewBinding):
         RecyclerView.ViewHolder(binding.root){
-
         val account = binding.rAccount
         val date = binding.rDate
         val amount = binding.rAmount
